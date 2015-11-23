@@ -42,5 +42,6 @@
     <string name="error_mismatched_passwords">enter the same password twice</string>
     <string name="error_join">", and "</string>
     <string name="error_end">.</string>
+    <string name="title_activity_splash">Splash</string>
 
 </resources>
