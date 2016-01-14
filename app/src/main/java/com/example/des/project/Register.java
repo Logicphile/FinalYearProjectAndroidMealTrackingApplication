@@ -1,16 +1,18 @@
+// This class is the Register class for registering a user with the app and in turn logging their details to the Parse.com database.
+
 package com.example.des.project;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.des.project.LoginCheck;
+import com.example.des.project.R;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -27,7 +29,6 @@ public class Register extends AppCompatActivity
         setContentView(R.layout.activity_register);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         // Set up the signup form.
         usernameView = (EditText) findViewById(R.id.username);

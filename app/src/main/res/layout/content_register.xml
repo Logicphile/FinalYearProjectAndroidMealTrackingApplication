@@ -52,7 +52,7 @@
         android:layout_gravity="right"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
-        android:text="@string/sign_up"
+        android:text="@string/register"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 

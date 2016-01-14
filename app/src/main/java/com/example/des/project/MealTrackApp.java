@@ -1,25 +1,21 @@
+////This class initialises the parse.com account and connects it to this app.
+
 package com.example.des.project;
 
 import android.app.Application;
 
 import com.parse.Parse;
-//import com.parse.ParseObject;
 
-/**
- * Created by Des on 19/11/2015.
- */
 public class MealTrackApp extends Application
 {
     public void onCreate()
     {
+        super.onCreate();
+
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
 
-        Parse.initialize(this, "1SzsISGqSK4hDLbLyxQaHVxrPcCpbIeTKDK1xwyi", "zd1Kgbe8oTrbStbHf2QQDzkmUOyoc9pYK1r0KVLl");
-
-        // ParseObject testObject = new ParseObject("TestObject");
-        // testObject.put("foo", "bar");
-        // testObject.saveInBackground();
+        Parse.initialize(this, "1SzsISGqSK4hDLbLyxQaHVxrPcCpbIeTKDK1xwyi", "zd1Kgbe8oTrbStbHf2QQDzkmUOyoc9pYK1r0KVLl");     //This initialises Parse.com. The "App ID", "Client ID" that is used to access Parse.com. The app ID specifies the particular application being used (this app), and the client ID is the ID used to specify the account being used (my account registered using my student email).
     }
 
 }
