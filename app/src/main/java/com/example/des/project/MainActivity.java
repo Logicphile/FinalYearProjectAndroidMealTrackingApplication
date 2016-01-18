@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.example.des.project.LoginCheck;
 import com.example.des.project.R;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity
@@ -28,14 +29,16 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        }); */
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -45,6 +48,13 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        /*FloatingActionsMenu rightLabels = (FloatingActionsMenu) findViewById(R.id.right_labels);
+        com.getbase.floatingactionbutton.FloatingActionButton addedOnce = new com.getbase.floatingactionbutton.FloatingActionButton(this);
+        addedOnce.setTitle("Added once");
+        rightLabels.addButton(addedOnce); */
     }
 
     @Override
