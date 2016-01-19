@@ -22,7 +22,7 @@
         android:paddingEnd="@dimen/abc_action_bar_content_inset_material"
 
         android:enabled="false"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
 
