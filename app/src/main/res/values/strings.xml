@@ -13,6 +13,7 @@
 
     <string name="parse_app_id">YOUR_PARSE_APP_ID</string>
     <string name="parse_client_id">YOUR_PARSE_CLIENT_ID</string>
+    <string name="username"></string>
 
     <string name="title_activity_sign_up_or_log_in">SignUpOrLogInActivity</string>
     <string name="log_in">Log in</string>

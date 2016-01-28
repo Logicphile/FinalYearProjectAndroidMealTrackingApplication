@@ -2,10 +2,8 @@ package com.example.des.project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,9 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-import com.example.des.project.LoginCheck;
-import com.example.des.project.R;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.ParseUser;
 
@@ -26,17 +23,15 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        }); */
+       /* final TextView textViewToChange = (TextView) findViewById(R.id.user_test);
+        textViewToChange.setText(currentUser);*/
+
+        //Log.i("Current User", ParseUser.getCurrentUser().getObjectId());
+
 
         /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -49,12 +44,6 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
-        /*FloatingActionsMenu rightLabels = (FloatingActionsMenu) findViewById(R.id.right_labels);
-        com.getbase.floatingactionbutton.FloatingActionButton addedOnce = new com.getbase.floatingactionbutton.FloatingActionButton(this);
-        addedOnce.setTitle("Added once");
-        rightLabels.addButton(addedOnce); */
     }
 
     @Override
@@ -114,5 +103,11 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    // The below is the method used when a click is registered from the floating action buttons
+    public void clickFAB(View view) {
+            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+            startActivity(intent);
     }
 }
