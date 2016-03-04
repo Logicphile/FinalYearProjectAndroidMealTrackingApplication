@@ -22,7 +22,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_main"
+
+
+        />
 
 
   <!--  <android.support.design.widget.FloatingActionButton
@@ -62,7 +65,9 @@
             fab:fab_size="mini"
             fab:fab_title="Manual Entry"
             fab:fab_colorPressed="#ffffff"
-            android:src="@android:drawable/ic_menu_edit" />
+            android:src="@android:drawable/ic_menu_edit"
+            android:id="@+id/addMealFab1"
+            android:onClick="clickFABAddMeal" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/camera_fab"
@@ -83,9 +88,12 @@
             fab:fab_colorNormal="#ffffff"
             fab:fab_size="mini"
             fab:fab_title="Scan"
-            fab:fab_colorPressed="#ffffff"/>
+            fab:fab_colorPressed="#ffffff"
+            android:onClick="clickFABscan"
+            />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
 
 
 

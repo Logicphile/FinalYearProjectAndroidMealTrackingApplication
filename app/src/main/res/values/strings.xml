@@ -51,6 +51,6 @@
     <string name="error_join">", and "</string>
     <string name="error_end">.</string>
     <string name="title_activity_splash">Splash</string>
-
+    <string name="title_activity_add_meal">AddMealActivity</string>
 
 </resources>

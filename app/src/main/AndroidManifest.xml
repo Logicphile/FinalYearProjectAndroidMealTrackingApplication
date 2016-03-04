@@ -62,6 +62,12 @@
             android:label="@string/app_name">
         </activity>
 
+        <activity
+            android:name=".AddMealActivity"
+            android:label="@string/title_activity_add_meal"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
     </application>
 
 </manifest>
