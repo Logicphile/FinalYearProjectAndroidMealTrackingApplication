@@ -41,7 +41,6 @@ public class AddMealActivity extends Activity
     public static final int CHOOSE_PIC_REQUEST_CODE = 1;
     public static final int MEDIA_TYPE_IMAGE = 2;
 
-    public static final int CAMERA_REQUEST = 10;
 
     //ImageView imageView;
    // protected ImageView imgMealPhoto;
@@ -76,7 +75,7 @@ public class AddMealActivity extends Activity
             public void onClick(View v) {
                 //create parse object for image to upload
                 final ParseObject imageUpload = new ParseObject("ImageUploads");
-                Log.i("Current User", "Got here");
+
                 try{
                     //convert image to bytes for upload.
                     byte[] fileBytes = FileHelper.getByteArrayFromFile(AddMealActivity.this, mMediaUri);
@@ -138,15 +137,20 @@ public class AddMealActivity extends Activity
         builder.setNegativeButton("Take Photo", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Log.i("Current User", "Got here");
                 //take photo
                 Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                Log.i("Current User", "Got here");
                 mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+                Log.i("Current User", "Got here");
                 if (mMediaUri == null) {
                     //display error
                     Toast.makeText(getApplicationContext(), "Sorry there was an error! Try again.", Toast.LENGTH_LONG).show();
                 } else {
+                    Log.i("Current User", "Got here");
                     takePicture.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
                     startActivityForResult(takePicture, TAKE_PIC_REQUEST_CODE);
+                    Log.i("Current User", "Got here");
                 }
             }
         });
@@ -202,20 +206,11 @@ public class AddMealActivity extends Activity
         }
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK)
-        {
-           /* if (requestCode == CAMERA_REQUEST)
-            {
-                Bitmap cameraImage = (Bitmap) data.getExtras().get("data");
-
-                mPreviewImageView.setImageBitmap(cameraImage);
-            }*/
-            /////////////////////////////////////////////////
-
+        if(resultCode == RESULT_OK){
+            Log.i("HELLO","");
             if(requestCode == CHOOSE_PIC_REQUEST_CODE){
                 if(data == null){
                     Toast.makeText(getApplicationContext(), "Image cannot be null!", Toast.LENGTH_LONG).show();
@@ -224,18 +219,7 @@ public class AddMealActivity extends Activity
                     //set previews
                     mPreviewImageView.setImageURI(mMediaUri);
                 }
-            }
-            else if (requestCode == TAKE_PIC_REQUEST_CODE)
-            {
-                if(data == null){
-                    Toast.makeText(getApplicationContext(), "Image cannot be null!", Toast.LENGTH_LONG).show();
-                }else{
-                    mMediaUri = data.getData();
-                    //set previews
-                    mPreviewImageView.setImageURI(mMediaUri);
-                }
-            }
-            else {
+            }else {
 
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 mediaScanIntent.setData(mMediaUri);
