@@ -1,5 +1,6 @@
 package com.example.des.project;
 
+import android.app.ListActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -40,17 +42,17 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static final int TAKE_PIC_REQUEST_CODE = 0;
+   /* public static final int TAKE_PIC_REQUEST_CODE = 0;
     public static final int CHOOSE_PIC_REQUEST_CODE = 1;
     public static final int MEDIA_TYPE_IMAGE = 2;
 
     protected Button mAddImageBtn;
-    protected Button mUploadImageBtn;
+    public Button mUploadImageBtn;
     protected ImageView mPreviewImageView;
 
-    private Uri mMediaUri;
+    private Uri mMediaUri;*/
 
-    public void queryImagesFromParse(){
+    /*public void queryImagesFromParse(){
         ParseQuery<ParseObject> imagesQuery = new ParseQuery<>("ImageUploads");
         imagesQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -58,14 +60,14 @@ public class MainActivity extends AppCompatActivity
                 if(e == null){
 
                     MainActivityAdapter adapter = new MainActivityAdapter(MainActivity.this, images);
-                   // setListAdapter(adapter);
+                  // setListAdapter(adapter);
 
                 }else{
                     Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
-    }
+    }*/
 
 
     @Override
@@ -76,12 +78,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        queryImagesFromParse();
+        //Parse.initialize(this, "1SzsISGqSK4hDLbLyxQaHVxrPcCpbIeTKDK1xwyi", "zd1Kgbe8oTrbStbHf2QQDzkmUOyoc9pYK1r0KVLl");
+
+       /* queryImagesFromParse();
 
         //initialize
         mAddImageBtn = (Button)findViewById(R.id.addImageButton);
-        mUploadImageBtn = (Button)findViewById(R.id.uploadImageButton);
-        mPreviewImageView = (ImageView)findViewById(R.id.previewImageView);
+        mUploadImageBtn = (Button)findViewById(R.id.addMealFab);
+        mPreviewImageView = (ImageView)findViewById(R.id.mealimageView);
 
         //listen to add button click
         mAddImageBtn.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +99,7 @@ public class MainActivity extends AppCompatActivity
                     public void onClick(DialogInterface dialog, int which) {
                         //upload image
                         Intent choosePictureIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                        choosePictureIntent.setType("image/*");
+                        choosePictureIntent.setType("image*//*");
                         startActivityForResult(choosePictureIntent, CHOOSE_PIC_REQUEST_CODE);
 
                     }
@@ -118,10 +122,10 @@ public class MainActivity extends AppCompatActivity
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-        });
+        });*/
 
         //listen to upload button click
-        mUploadImageBtn.setOnClickListener(new View.OnClickListener() {
+   /*     mUploadImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //create parse object for image to upload
@@ -164,7 +168,7 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
-
+*/
 
 
 
@@ -192,7 +196,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     //inner helper method
-    private Uri getOutputMediaFileUri(int mediaTypeImage) {
+   /* private Uri getOutputMediaFileUri(int mediaTypeImage) {
 
         if(isExternalStorageAvailable()){
             //get the URI
@@ -225,22 +229,22 @@ public class MainActivity extends AppCompatActivity
             return null;
         }
 
-    }
+    }*/
     //check if external storage is mounted. helper method
-    private boolean isExternalStorageAvailable(){
+   /* private boolean isExternalStorageAvailable(){
         String state = Environment.getExternalStorageState();
         if(state.equals(Environment.MEDIA_MOUNTED)){
             return true;
         }else{
             return false;
         }
-    }
+    }*/
 
 
-   /* @Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
+        /*if(resultCode == RESULT_OK){
             if(requestCode == CHOOSE_PIC_REQUEST_CODE){
                 if(data == null){
                     Toast.makeText(getApplicationContext(), "Image cannot be null!", Toast.LENGTH_LONG).show();
@@ -262,8 +266,8 @@ public class MainActivity extends AppCompatActivity
 
         }else if(resultCode != RESULT_CANCELED){
             Toast.makeText(getApplicationContext(), "Cancelled!", Toast.LENGTH_LONG).show();
-        }
-    }*/
+        }*/
+    }
 
 
     @Override
@@ -350,7 +354,7 @@ public class MainActivity extends AppCompatActivity
         integrator.initiateScan(IntentIntegrator.QR_CODE_TYPES);
     }
 
-    @Override
+    /*@Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult result =
                 IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
@@ -364,14 +368,14 @@ public class MainActivity extends AppCompatActivity
                //         getString(R.string.result_failed_why));
             }
         }
-    }
+    }*/
 
-    private void showDialog(int title, CharSequence message) {
+   /* private void showDialog(int title, CharSequence message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title);
         builder.setMessage(message);
        // builder.setPositiveButton(R.string.ok_button, null);
         builder.show();
-    }
+    }*/
 
 }

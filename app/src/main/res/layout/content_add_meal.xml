@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.des.project.AddMealActivity"
+    tools:showIn="@layout/activity_add_meal"
+    >
+
+    <android.support.design.widget.VisibilityAwareImageButton
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/addMealPicButton"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        style="@style/Base.Widget.AppCompat.ImageButton"
+        android:background="@color/colorPrimaryDark"
+        android:src="@android:drawable/ic_menu_camera"
+        android:onClick="imageCap" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etDescrip"
+        android:layout_marginTop="41dp"
+        android:inputType="text"
+        android:autoText="false"
+        android:hint="Description"
+        android:layout_below="@+id/addMealPicButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/addMealPicButton"
+        android:layout_alignEnd="@+id/addMealPicButton" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etCalories"
+        android:layout_marginTop="25dp"
+        android:inputType="text"
+        android:autoText="false"
+        android:hint="Calories"
+        android:layout_below="@+id/etDescrip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/etDescrip"
+        android:layout_alignEnd="@+id/etDescrip" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/previewImageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:onClick="imageCap" />
+</RelativeLayout>

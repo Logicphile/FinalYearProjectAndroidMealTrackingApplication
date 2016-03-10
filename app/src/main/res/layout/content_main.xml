@@ -49,13 +49,13 @@
         android:layout_alignTop="@+id/addImageButton"
         android:layout_alignEnd="@+id/listView" />
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:id="@+id/previewImageView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/addImageButton" />
+        android:layout_below="@+id/addImageButton" />-->
 
 
 
