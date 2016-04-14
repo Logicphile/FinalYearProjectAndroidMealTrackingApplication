@@ -52,5 +52,15 @@
     <string name="error_end">.</string>
     <string name="title_activity_splash">Splash</string>
     <string name="title_activity_add_meal">AddMealActivity</string>
+    <string name="title_activity_test">test</string>
+    <string name="select_food_item"></string>
+    <string-array name="foodItems_array">
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Orange</item>
+        <item>Mars Bar</item>
+        <item>Snickers</item>
+        <item>Tayto</item>
+    </string-array>
 
 </resources>

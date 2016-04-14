@@ -7,16 +7,26 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-import com.example.des.project.R;
 import com.parse.ParseObject;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by ronnykibet on 11/10/15.
- */
-public class MainActivityAdapter extends ArrayAdapter<ParseObject>{
+
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+
+import com.parse.ParseObject;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+public class MainActivityAdapter extends ArrayAdapter<ParseObject> {
     private Context mContext;
     private List<ParseObject> mImages;
 

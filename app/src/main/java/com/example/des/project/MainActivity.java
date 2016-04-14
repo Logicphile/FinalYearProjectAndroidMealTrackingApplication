@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
                 if(e == null){
 
                     MainActivityAdapter adapter = new MainActivityAdapter(MainActivity.this, images);
-                  // setListAdapter(adapter);
+                    setListAdapter(adapter);
 
                 }else{
                     Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -80,8 +80,9 @@ public class MainActivity extends AppCompatActivity
 
         //Parse.initialize(this, "1SzsISGqSK4hDLbLyxQaHVxrPcCpbIeTKDK1xwyi", "zd1Kgbe8oTrbStbHf2QQDzkmUOyoc9pYK1r0KVLl");
 
-       /* queryImagesFromParse();
-
+       /*QueryImages qi = new QueryImages();
+        qi.queryImagesFromParse();*/
+/*
         //initialize
         mAddImageBtn = (Button)findViewById(R.id.addImageButton);
         mUploadImageBtn = (Button)findViewById(R.id.addMealFab);

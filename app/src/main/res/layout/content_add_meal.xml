@@ -28,29 +28,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/etDescrip"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="110dp"
         android:inputType="text"
         android:autoText="false"
         android:hint="Description"
         android:layout_below="@+id/addMealPicButton"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/addMealPicButton"
-        android:layout_alignEnd="@+id/addMealPicButton" />
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/etCalories"
-        android:layout_marginTop="25dp"
         android:inputType="text"
         android:autoText="false"
         android:hint="Calories"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/etDescrip"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/etDescrip"
-        android:layout_alignEnd="@+id/etDescrip" />
+        android:layout_alignEnd="@+id/addMealPicButton" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -60,4 +56,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
         android:onClick="imageCap" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_alignBottom="@+id/etDescrip"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="51dp"
+        android:entries="@array/foodItems_array"/>
+        <!--android:prompt="@string/country_prompt"-->
 </RelativeLayout>

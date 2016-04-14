@@ -2,35 +2,32 @@ package com.example.des.project;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -52,6 +49,42 @@ public class AddMealActivity extends Activity
 
     //public ListView listView;
 
+    Spinner spinner1;
+    ArrayAdapter<CharSequence> adapter;
+    private EditText etD;
+
+    public int appleCals = 10;
+
+
+   /* public void addListenerOnSpinnerItemSelection() {
+        *//*etD = (EditText) findViewById(R.id.etDescrip);
+        etD.setText(String.valueOf(spinner1.getSelectedItem()));*//*
+       *//* spinner1 = (Spinner) findViewById(R.id.spinner);
+        spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());*//*
+    }*/
+
+    /*// get the selected dropdown list value
+    public void addListenerOnButton() {
+
+        spinner1 = (Spinner) findViewById(R.id.spinner);
+       // btnSubmit = (Button) findViewById(R.id.btnSubmit);
+
+        btnSubmit.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v)
+            {
+
+                Toast.makeText(AddMealActivity.this,"OnClickListener : " +"\nSpinner 1 : "+ String.valueOf(spinner1.getSelectedItem()), Toast.LENGTH_SHORT).show();
+            }
+
+        });
+    }
+}*/
+
+
+
+
 
 
 
@@ -61,6 +94,42 @@ public class AddMealActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meal);
         // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        spinner1 = (Spinner) findViewById(R.id.spinner);
+        adapter = ArrayAdapter.createFromResource(this, R.array.foodItems_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(adapter);
+
+
+
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+                Toast.makeText(parent.getContext(),
+                "On Item Select : \n" + parent.getItemAtPosition(pos).toString(),
+                Toast.LENGTH_LONG).show();
+
+                etD = (EditText) findViewById(R.id.etDescrip);
+                etD.setText(parent.getItemAtPosition(pos).toString());
+
+
+                //String subtotal = String.valueOf(spinner1.getSelectedItem());
+
+            }
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+
+            }
+
+
+
+        });
+
+
+        //addListenerOnButton();
+       // addListenerOnSpinnerItemSelection();
 
         //listView = (ListView) findViewById(R.id.listView);
         mPreviewImageView = (ImageView) findViewById(R.id.previewImageView);
@@ -96,7 +165,7 @@ public class AddMealActivity extends Activity
                                     imageUpload.saveInBackground(new SaveCallback() {
                                         @Override
                                         public void done(ParseException e) {
-                                            Toast.makeText(getApplicationContext(), "Success Uploading iMage!", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), "Successfully Uploaded", Toast.LENGTH_LONG).show();
                                         }
                                     });
                                 }else{
