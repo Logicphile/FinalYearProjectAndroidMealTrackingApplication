@@ -4,6 +4,8 @@ import android.app.ListActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -25,6 +27,8 @@ import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -77,6 +81,58 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ImageUploads");
+
+
+        // Locate the objectId from the class
+        query.getInBackground("eqaeJwv0mb",
+                new GetCallback<ParseObject>() {
+
+                    public void done(ParseObject object,
+                                     ParseException e) {
+                        // TODO Auto-generated method stub
+
+                        // Locate the column named "ImageName" and set
+                        // the string
+                        ParseFile fileObject = (ParseFile) object
+                                .get("imageContent");
+                        fileObject
+                                .getDataInBackground(new GetDataCallback() {
+
+                                    public void done(byte[] data,
+                                                     ParseException e) {
+                                        if (e == null) {
+                                            Log.d("test",
+                                                    "We've got data in data.");
+                                            // Decode the Byte[] into
+                                            // Bitmap
+                                            Bitmap bmp = BitmapFactory
+                                                    .decodeByteArray(
+                                                            data, 0,
+                                                            data.length);
+
+                                            // Get the ImageView from
+                                            // main.xml
+                                            ImageView image = (ImageView) findViewById(R.id.image);
+
+                                            // Set the Bitmap into the
+                                            // ImageView
+                                            image.setImageBitmap(bmp);
+
+
+
+                                        } else {
+                                            Log.d("test",
+                                                    "There was a problem downloading the data.");
+                                        }
+                                    }
+                                });
+                    }
+                });
+
+
+
 
         //Parse.initialize(this, "1SzsISGqSK4hDLbLyxQaHVxrPcCpbIeTKDK1xwyi", "zd1Kgbe8oTrbStbHf2QQDzkmUOyoc9pYK1r0KVLl");
 

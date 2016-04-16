@@ -39,7 +39,7 @@ public class AddMealActivity extends Activity
     public static final int CHOOSE_PIC_REQUEST_CODE = 1;
     public static final int MEDIA_TYPE_IMAGE = 2;
 
-
+    static final String BODY_KEY = "body";  // The column name on Parse.com Named "body"
     //ImageView imageView;
    // protected ImageView imgMealPhoto;
 
@@ -153,10 +153,31 @@ public class AddMealActivity extends Activity
 
 
         addMealFab = (FloatingActionButton) findViewById(R.id.addMealFab);
+        etD = (EditText) findViewById(R.id.etDescrip);
+        etC = (EditText) findViewById(R.id.etCalories);
+
         //listen to upload button click
         addMealFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String data = etD.getText().toString();
+                ParseObject foodItemDescription = ParseObject.create("FoodItemDescription");
+
+                //foodItemDescription.put(USER_ID_KEY, ParseUser.getCurrentUser().getObjectId());
+                foodItemDescription.put(BODY_KEY, data);
+                foodItemDescription.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        Toast.makeText(AddMealActivity.this, "Successfully uploaded food item description to Parse",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+                //etD.setText(null);
+
+
+
+
                 //create parse object for image to upload
                 final ParseObject imageUpload = new ParseObject("ImageUploads");
 
