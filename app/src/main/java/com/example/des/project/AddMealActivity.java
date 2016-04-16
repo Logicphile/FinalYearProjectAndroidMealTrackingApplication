@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
@@ -52,8 +53,9 @@ public class AddMealActivity extends Activity
     Spinner spinner1;
     ArrayAdapter<CharSequence> adapter;
     private EditText etD;
+    private EditText etC;
 
-    public int appleCals = 10;
+
 
 
    /* public void addListenerOnSpinnerItemSelection() {
@@ -113,9 +115,22 @@ public class AddMealActivity extends Activity
                 etD = (EditText) findViewById(R.id.etDescrip);
                 etD.setText(parent.getItemAtPosition(pos).toString());
 
+                Log.i("Current User", ParseUser.getCurrentUser().getUsername());
 
-                //String subtotal = String.valueOf(spinner1.getSelectedItem());
+                if (spinner1.getSelectedItem().toString().equals("Apple"))
+                {
+                    int Cals = 10;
+                    etC = (EditText) findViewById(R.id.etCalories);
+                    etC.setText("" + Cals + " Calories");
 
+                    Log.i("Current blah", ParseUser.getCurrentUser().getUsername());
+                }
+                else if (spinner1.getSelectedItem().toString().equals("Banana"))
+                {
+                    int Cals = 20;
+                    etC = (EditText) findViewById(R.id.etCalories);
+                    etC.setText("" + Cals + " Calories");
+                }
             }
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
