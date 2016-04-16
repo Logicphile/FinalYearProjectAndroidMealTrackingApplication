@@ -40,6 +40,7 @@ public class AddMealActivity extends Activity
     public static final int MEDIA_TYPE_IMAGE = 2;
 
     static final String BODY_KEY = "body";  // The column name on Parse.com Named "body"
+    static final String CALORIES_KEY = "calories";  // The column name on Parse.com Named "body"
     //ImageView imageView;
    // protected ImageView imgMealPhoto;
 
@@ -161,11 +162,13 @@ public class AddMealActivity extends Activity
             @Override
             public void onClick(View v) {
 
-                String data = etD.getText().toString();
-                ParseObject foodItemDescription = ParseObject.create("FoodItemDescription");
+                String data = etD.getText().toString(); //Get text from the etD editText field and set it equal to a String variable named data
+                String data1 = etC.getText().toString();
+                ParseObject foodItemDescription = ParseObject.create("FoodItemDescription"); //Creates the table name FoodItemDescription in parse.com
 
                 //foodItemDescription.put(USER_ID_KEY, ParseUser.getCurrentUser().getObjectId());
                 foodItemDescription.put(BODY_KEY, data);
+                foodItemDescription.put(CALORIES_KEY, data1);
                 foodItemDescription.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {

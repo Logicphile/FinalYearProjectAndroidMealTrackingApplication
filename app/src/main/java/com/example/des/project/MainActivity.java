@@ -39,12 +39,15 @@ import com.parse.SaveCallback;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+   // private List<ParseObject> myCars = new ArrayList<ParseObject>();
 
    /* public static final int TAKE_PIC_REQUEST_CODE = 0;
     public static final int CHOOSE_PIC_REQUEST_CODE = 1;
@@ -83,7 +86,6 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ImageUploads");
-
 
         // Locate the objectId from the class
         query.getInBackground("eqaeJwv0mb",
