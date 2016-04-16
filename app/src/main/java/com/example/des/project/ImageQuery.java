@@ -22,8 +22,8 @@ public class ImageQuery extends ListActivity{
             public void done(List<ParseObject> images, ParseException e) {
                 if(e == null){
 
-                    MainActivityAdapter adapter = new MainActivityAdapter(ImageQuery.this, images);
-                    setListAdapter(adapter);
+                    /*MainActivityAdapter adapter = new MainActivityAdapter(ImageQuery.this, images);
+                    setListAdapter(adapter);*/
 
                 }else{
                     Toast.makeText(ImageQuery.this, e.getMessage(), Toast.LENGTH_LONG).show();

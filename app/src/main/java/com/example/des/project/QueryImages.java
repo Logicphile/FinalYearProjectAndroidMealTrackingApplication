@@ -40,8 +40,7 @@ public class QueryImages extends ListActivity
             public void done(List<ParseObject> images, ParseException e) {
                 if(e == null){
 
-                    MainActivityAdapter adapter = new MainActivityAdapter(QueryImages.this, images);
-                    setListAdapter(adapter);
+
 
                 }else{
                     Toast.makeText(QueryImages.this, e.getMessage(), Toast.LENGTH_LONG).show();

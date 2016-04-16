@@ -62,5 +62,6 @@
         <item>Snickers</item>
         <item>Tayto</item>
     </string-array>
+    <string name="toggle">Toggle View</string>
 
 </resources>

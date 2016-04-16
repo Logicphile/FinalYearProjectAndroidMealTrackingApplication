@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -34,6 +35,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -46,6 +48,10 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ParseQueryAdapter<ParseObject> mainAdapter;
+    private CustomAdapter urgentTodosAdapter;
+    private ListView listView;
 
    // private List<ParseObject> myCars = new ArrayList<ParseObject>();
 
@@ -85,7 +91,37 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ImageUploads");
+        // Initialize main ParseQueryAdapter
+        mainAdapter = new ParseQueryAdapter<ParseObject>(this, "imageUploads");
+        mainAdapter.setTextKey("title");
+        mainAdapter.setImageKey("image");
+
+        // Initialize the subclass of ParseQueryAdapter
+        urgentTodosAdapter = new CustomAdapter(this);
+
+        // Initialize ListView and set initial view to mainAdapter
+        listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(mainAdapter);
+        mainAdapter.loadObjects();
+
+        // Initialize toggle button
+        Button toggleButton = (Button) findViewById(R.id.toggleButton);
+        toggleButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (listView.getAdapter() == mainAdapter) {
+                    listView.setAdapter(urgentTodosAdapter);
+                    urgentTodosAdapter.loadObjects();
+                } else {
+                    listView.setAdapter(mainAdapter);
+                    mainAdapter.loadObjects();
+                }
+            }
+
+        });
+
+       /* ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ImageUploads");
 
         // Locate the objectId from the class
         query.getInBackground("eqaeJwv0mb",
@@ -132,7 +168,7 @@ public class MainActivity extends AppCompatActivity
                                 });
                     }
                 });
-
+*/
 
 
 

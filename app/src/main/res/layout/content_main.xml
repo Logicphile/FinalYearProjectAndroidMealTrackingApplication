@@ -12,7 +12,7 @@
     tools:context="com.example.des.project.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
@@ -29,7 +29,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/image"
-        />
+        />-->
+
+    <Button
+        android:id="@+id/toggleButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/toggle" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/toggleButton"
+        android:layout_alignParentTop="true" />
 
     <!--<ImageView
         android:layout_width="wrap_content"
