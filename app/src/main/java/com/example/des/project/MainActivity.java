@@ -101,10 +101,10 @@ public class MainActivity extends AppCompatActivity
 
         // Initialize ListView and set initial view to mainAdapter
         listView = (ListView) findViewById(R.id.list);
-        listView.setAdapter(mainAdapter);
-        mainAdapter.loadObjects();
+        listView.setAdapter(urgentTodosAdapter);
+        urgentTodosAdapter.loadObjects();
 
-        // Initialize toggle button
+        /*// Initialize toggle button
         Button toggleButton = (Button) findViewById(R.id.toggleButton);
         toggleButton.setOnClickListener(new View.OnClickListener() {
 
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity
                 }
             }
 
-        });
+        });*/
 
        /* ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ImageUploads");
 

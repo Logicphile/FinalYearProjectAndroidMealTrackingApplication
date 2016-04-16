@@ -44,7 +44,11 @@ public class CustomAdapter extends ParseQueryAdapter<ParseObject> {
 
         // Add the title view
         TextView titleTextView = (TextView) v.findViewById(R.id.text1);
-        titleTextView.setText(object.getString("title"));
+        titleTextView.setText(object.getString("body"));
+
+        // Add the title view
+        TextView caloriesTextView = (TextView) v.findViewById(R.id.text2);
+        caloriesTextView.setText(object.getString("calories"));
 
         // Add a reminder of how long this item has been outstanding
         TextView timestampView = (TextView) v.findViewById(R.id.timestamp);
