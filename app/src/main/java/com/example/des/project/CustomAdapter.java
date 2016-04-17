@@ -5,11 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.parse.GetCallback;
+import com.parse.ParseAnonymousUtils;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+import com.parse.ParseUser;
 
 public class CustomAdapter extends ParseQueryAdapter<ParseObject> {
 
@@ -19,7 +22,8 @@ public class CustomAdapter extends ParseQueryAdapter<ParseObject> {
         super(context, new ParseQueryAdapter.QueryFactory<ParseObject>() {
             public ParseQuery create() {
                 ParseQuery query = new ParseQuery("ImageUploads");
-                //query.whereEqualTo("highPri", true);
+                query.whereEqualTo("user", ParseUser.getCurrentUser().getObjectId()); // Query ImageUploads table only where the column value equal the current user objectId
+
                 return query;
             }
         });
@@ -43,8 +47,8 @@ public class CustomAdapter extends ParseQueryAdapter<ParseObject> {
         }
 
         // Add the title view
-        TextView titleTextView = (TextView) v.findViewById(R.id.text1);
-        titleTextView.setText(object.getString("body"));
+        TextView itemDescripView = (TextView) v.findViewById(R.id.text1);
+        itemDescripView.setText(object.getString("body"));
 
         // Add the title view
         TextView caloriesTextView = (TextView) v.findViewById(R.id.text2);

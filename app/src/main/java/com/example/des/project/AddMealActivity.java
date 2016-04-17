@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -164,6 +165,8 @@ public class AddMealActivity extends Activity
 
                 final String data = etD.getText().toString(); //Get text from the etD editText field and set it equal to a String variable named data
                 final String data1 = etC.getText().toString();
+                final String user = ParseUser.getCurrentUser().getObjectId();
+                //final int user = Integer.parseInt(ParseUser.getCurrentUser().getObjectId());
                 ParseObject foodItemDescription = ParseObject.create("FoodItemDescription"); //Creates the table name FoodItemDescription in parse.com
 
                 //foodItemDescription.put(USER_ID_KEY, ParseUser.getCurrentUser().getObjectId());
@@ -199,6 +202,7 @@ public class AddMealActivity extends Activity
                             @Override
                             public void done(ParseException e) {
                                 if(e == null){
+                                    imageUpload.put("user", user);
                                     imageUpload.put(BODY_KEY, data);
                                     imageUpload.put(CALORIES_KEY, data1);
                                     imageUpload.put("imageContent", file);
