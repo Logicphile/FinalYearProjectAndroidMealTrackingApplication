@@ -63,5 +63,6 @@
         <item>Tayto</item>
     </string-array>
     <string name="toggle">Toggle View</string>
+    <string name="title_activity_chart">Chart</string>
 
 </resources>

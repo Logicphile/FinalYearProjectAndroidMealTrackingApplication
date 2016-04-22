@@ -33,4 +33,5 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile files('libs/commons-io-2.4.jar')
     compile files('libs/Parse-1.4.1.jar')
+    compile 'com.jjoe64:graphview:4.0.1'
 }
