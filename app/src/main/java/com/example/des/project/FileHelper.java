@@ -1,11 +1,11 @@
+// This class is responsible for converting the image to a suitable format for upload & storage in the cloud
+
 package com.example.des.project;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
-
-import com.example.des.project.ImageResizer;
 
 import org.apache.commons.io.IOUtils;
 

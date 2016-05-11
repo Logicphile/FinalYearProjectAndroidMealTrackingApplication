@@ -1,50 +1,22 @@
+// This class is the main class and is responsible for functionality such as displaying only the currently logged in user's meals
 package com.example.des.project;
 
-import android.app.ListActivity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
-import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.GetDataCallback;
-import com.parse.Parse;
-import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
-
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,36 +24,6 @@ public class MainActivity extends AppCompatActivity
     private ParseQueryAdapter<ParseObject> mainAdapter;
     private CustomAdapter mealAdapter;
     private ListView listView;
-
-   // private List<ParseObject> myCars = new ArrayList<ParseObject>();
-
-   /* public static final int TAKE_PIC_REQUEST_CODE = 0;
-    public static final int CHOOSE_PIC_REQUEST_CODE = 1;
-    public static final int MEDIA_TYPE_IMAGE = 2;
-
-    protected Button mAddImageBtn;
-    public Button mUploadImageBtn;
-    protected ImageView mPreviewImageView;
-
-    private Uri mMediaUri;*/
-
-    /*public void queryImagesFromParse(){
-        ParseQuery<ParseObject> imagesQuery = new ParseQuery<>("ImageUploads");
-        imagesQuery.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> images, ParseException e) {
-                if(e == null){
-
-                    MainActivityAdapter adapter = new MainActivityAdapter(MainActivity.this, images);
-                    setListAdapter(adapter);
-
-                }else{
-                    Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }*/
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,29 +61,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        /*if(resultCode == RESULT_OK){
-            if(requestCode == CHOOSE_PIC_REQUEST_CODE){
-                if(data == null){
-                    Toast.makeText(getApplicationContext(), "Image cannot be null!", Toast.LENGTH_LONG).show();
-                }else{
-                    mMediaUri = data.getData();
-                    //set previews
-                    mPreviewImageView.setImageURI(mMediaUri);
-                }
-            }else {
-
-                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                mediaScanIntent.setData(mMediaUri);
-                sendBroadcast(mediaScanIntent);
-                //set previews
-
-                mPreviewImageView.setImageURI(mMediaUri);
-
-            }
-
-        }else if(resultCode != RESULT_CANCELED){
-            Toast.makeText(getApplicationContext(), "Cancelled!", Toast.LENGTH_LONG).show();
-        }*/
     }
 
 

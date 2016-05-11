@@ -1,3 +1,5 @@
+// This class is responsible for converting the image to a suitable format for upload & storage in the cloud
+
 package com.example.des.project;
 
 import android.graphics.Bitmap;

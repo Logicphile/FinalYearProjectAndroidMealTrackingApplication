@@ -1,3 +1,5 @@
+// This class implements the chart graph with hardcoded values // This functionality is incomplete
+
 package com.example.des.project;
 
 import android.os.Bundle;
@@ -39,30 +41,4 @@ public class Chart extends AppCompatActivity {
         graph.addSeries(series);
         //////////////////////////////////////////////////////
     }
-/*
-
-    public ParseQuery create() {
-        ParseQuery query = new ParseQuery("ImageUploads");
-        query.whereEqualTo("user", ParseUser.getCurrentUser().getObjectId()); // Query ImageUploads table only where the column value equal the current user objectId
-
-        return query;
-    }
-
-    // Customize the layout by overriding getItemView
-    @Override
-    public View getItemView(ParseObject object, View v, ViewGroup parent) {
-
-        // Add the food item decription view
-        TextView itemDescripView = (TextView) v.findViewById(R.id.text1);
-        itemDescripView.setText(object.getString("body"));
-
-        // Add the calories view
-        TextView caloriesTextView = (TextView) v.findViewById(R.id.text2);
-        caloriesTextView.setText(object.getString("calories"));
-
-        // Add a timestamp
-        TextView timestampView = (TextView) v.findViewById(R.id.timestamp);
-        timestampView.setText(object.getCreatedAt().toString());
-        return v;
-    }*/
 }

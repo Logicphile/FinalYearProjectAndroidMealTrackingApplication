@@ -1,3 +1,5 @@
+// This class is responsible for allowing the user to take a photo, enter a description and enter the calories of a meal
+
 package com.example.des.project;
 
 import android.app.Activity;
@@ -12,15 +14,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -29,9 +28,7 @@ import com.parse.SaveCallback;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class AddMealActivity extends Activity
@@ -40,8 +37,8 @@ public class AddMealActivity extends Activity
     public static final int CHOOSE_PIC_REQUEST_CODE = 1;
     public static final int MEDIA_TYPE_IMAGE = 2;
 
-    static final String BODY_KEY = "body";  // The column name on Parse.com Named "body"
-    static final String CALORIES_KEY = "calories";  // The column name on Parse.com Named "body"
+    static final String BODY_KEY = "body";  // The column in Parse.com named "body"
+    static final String CALORIES_KEY = "calories";  // The column in Parse.com named "calories"
 
     public FloatingActionButton addMealFab;
     public ImageView mPreviewImageView;
@@ -221,9 +218,6 @@ public class AddMealActivity extends Activity
         dialog.show();
     }
 
-
-
-
     //inner helper method
     private Uri getOutputMediaFileUri(int mediaTypeImage) {
 
@@ -297,8 +291,6 @@ public class AddMealActivity extends Activity
             Toast.makeText(getApplicationContext(), "Cancelled!", Toast.LENGTH_LONG).show();
         }
     }
-
-
 }
 
 

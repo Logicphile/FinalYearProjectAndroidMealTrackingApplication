@@ -4,12 +4,7 @@ package com.example.des.project;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import com.example.des.project.LoginRegOptions;
-import com.example.des.project.MainActivity;
 import com.parse.ParseUser;
 
 public class LoginCheck extends Activity

@@ -8,10 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.des.project.Login;
-import com.example.des.project.R;
-import com.example.des.project.Register;
-
 public class LoginRegOptions extends AppCompatActivity
 {
     @Override

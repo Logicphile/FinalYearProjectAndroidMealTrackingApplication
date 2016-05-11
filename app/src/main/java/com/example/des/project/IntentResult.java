@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2009 ZXing authors
  *
@@ -15,6 +16,8 @@
  */
 
 package com.example.des.project;
+
+// This class is responsible for the scanning of a barcode functionality // This functionality has not been fully completed or fully implemented
 
 /**
  * <p>Encapsulates the result of a barcode scan invoked through {@link IntentIntegrator}.</p>

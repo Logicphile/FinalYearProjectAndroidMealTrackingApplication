@@ -1,3 +1,5 @@
+// This class is responsible for the custom layout of each list item (eg image on left with description, calories and timestamp stacked to the right of the image
+
 package com.example.des.project;
 
 import android.content.Context;
@@ -15,8 +17,7 @@ import com.parse.ParseUser;
 public class CustomAdapter extends ParseQueryAdapter<ParseObject> {
 
     public CustomAdapter(Context context) {
-        // Use the QueryFactory to construct a PQA that will only show
-        // Todos marked as high-pri
+
         super(context, new ParseQueryAdapter.QueryFactory<ParseObject>() {
             public ParseQuery create() {
                 ParseQuery query = new ParseQuery("ImageUploads");

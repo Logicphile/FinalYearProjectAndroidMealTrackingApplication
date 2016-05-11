@@ -1,3 +1,4 @@
+// This class is responsible for the scanning of a barcode functionality // This functionality has not been fully completed or fully implemented
 /*
  * Copyright 2009 ZXing authors
  *
