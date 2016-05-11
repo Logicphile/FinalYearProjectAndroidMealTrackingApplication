@@ -39,8 +39,7 @@ public class Login extends AppCompatActivity {
             {
                 // Validate the log in data
                 boolean validationError = false;
-                StringBuilder validationErrorMessage =
-                        new StringBuilder(getResources().getString(R.string.error_intro));
+                StringBuilder validationErrorMessage = new StringBuilder(getResources().getString(R.string.error_intro));
 
                 if (isEmpty(usernameView))
                 {
@@ -61,8 +60,7 @@ public class Login extends AppCompatActivity {
                 // If there is a validation error, display the error
                 if (validationError)
                 {
-                    Toast.makeText(Login.this, validationErrorMessage.toString(), Toast.LENGTH_LONG)
-                            .show();
+                    Toast.makeText(Login.this, validationErrorMessage.toString(), Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -73,10 +71,8 @@ public class Login extends AppCompatActivity {
                 dlg.show();
 
                 // Call the Parse login method
-                ParseUser.logInInBackground(usernameView.getText().toString(), passwordView.getText()
-                        .toString(), new LogInCallback()
+                ParseUser.logInInBackground(usernameView.getText().toString(), passwordView.getText().toString(), new LogInCallback()
                 {
-
                     @Override
                     public void done(ParseUser user, ParseException e)
                     {
@@ -110,5 +106,4 @@ public class Login extends AppCompatActivity {
             return true;
         }
     }
-
 }

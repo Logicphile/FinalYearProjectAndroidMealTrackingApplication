@@ -5,8 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.parse.GetCallback;
-import com.parse.ParseAnonymousUtils;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseObject;
@@ -33,28 +31,28 @@ public class CustomAdapter extends ParseQueryAdapter<ParseObject> {
     @Override
     public View getItemView(ParseObject object, View v, ViewGroup parent) {
         if (v == null) {
-            v = View.inflate(getContext(), R.layout.urgent_item, null);
+            v = View.inflate(getContext(), R.layout.meal_item, null);
         }
 
         super.getItemView(object, v, parent);
 
         // Add and download the image
-        ParseImageView todoImage = (ParseImageView) v.findViewById(R.id.icon);
+        ParseImageView mealImage = (ParseImageView) v.findViewById(R.id.icon);
         ParseFile imageFile = object.getParseFile("imageContent");
         if (imageFile != null) {
-            todoImage.setParseFile(imageFile);
-            todoImage.loadInBackground();
+            mealImage.setParseFile(imageFile);
+            mealImage.loadInBackground();
         }
 
-        // Add the title view
+        // Add the food item decription view
         TextView itemDescripView = (TextView) v.findViewById(R.id.text1);
         itemDescripView.setText(object.getString("body"));
 
-        // Add the title view
+        // Add the calories view
         TextView caloriesTextView = (TextView) v.findViewById(R.id.text2);
         caloriesTextView.setText(object.getString("calories"));
 
-        // Add a reminder of how long this item has been outstanding
+        // Add a timestamp
         TextView timestampView = (TextView) v.findViewById(R.id.timestamp);
         timestampView.setText(object.getCreatedAt().toString());
         return v;

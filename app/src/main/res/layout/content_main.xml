@@ -12,47 +12,11 @@
     tools:context="com.example.des.project.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <!--<TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:background="@drawable/rounded_corner"
-        android:textColor="#000000"
-        android:paddingStart="@dimen/abc_action_bar_content_inset_material"
-        android:paddingEnd="@dimen/abc_action_bar_content_inset_material"
-
-        android:enabled="false"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/image"
-        />-->
-
-    <!--<Button
-        android:id="@+id/toggleButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/toggle" />-->
-
     <ListView
         android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
 
         android:layout_alignParentTop="true" />
-
-    <!--<ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:id="@+id/previewImageView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/addImageButton" />-->
-
-
 
 </RelativeLayout>

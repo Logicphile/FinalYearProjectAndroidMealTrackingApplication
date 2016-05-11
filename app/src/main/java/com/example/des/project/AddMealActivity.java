@@ -42,69 +42,27 @@ public class AddMealActivity extends Activity
 
     static final String BODY_KEY = "body";  // The column name on Parse.com Named "body"
     static final String CALORIES_KEY = "calories";  // The column name on Parse.com Named "body"
-    //ImageView imageView;
-   // protected ImageView imgMealPhoto;
 
     public FloatingActionButton addMealFab;
     public ImageView mPreviewImageView;
 
     public Uri mMediaUri;
 
-    //public ListView listView;
-
     Spinner spinner1;
     ArrayAdapter<CharSequence> adapter;
     private EditText etD;
     private EditText etC;
 
-
-
-
-   /* public void addListenerOnSpinnerItemSelection() {
-        *//*etD = (EditText) findViewById(R.id.etDescrip);
-        etD.setText(String.valueOf(spinner1.getSelectedItem()));*//*
-       *//* spinner1 = (Spinner) findViewById(R.id.spinner);
-        spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());*//*
-    }*/
-
-    /*// get the selected dropdown list value
-    public void addListenerOnButton() {
-
-        spinner1 = (Spinner) findViewById(R.id.spinner);
-       // btnSubmit = (Button) findViewById(R.id.btnSubmit);
-
-        btnSubmit.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v)
-            {
-
-                Toast.makeText(AddMealActivity.this,"OnClickListener : " +"\nSpinner 1 : "+ String.valueOf(spinner1.getSelectedItem()), Toast.LENGTH_SHORT).show();
-            }
-
-        });
-    }
-}*/
-
-
-
-
-
-
-
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meal);
-        // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         spinner1 = (Spinner) findViewById(R.id.spinner);
         adapter = ArrayAdapter.createFromResource(this, R.array.foodItems_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(adapter);
-
-
 
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
@@ -117,15 +75,11 @@ public class AddMealActivity extends Activity
                 etD = (EditText) findViewById(R.id.etDescrip);
                 etD.setText(parent.getItemAtPosition(pos).toString());
 
-                Log.i("Current User", ParseUser.getCurrentUser().getUsername());
-
                 if (spinner1.getSelectedItem().toString().equals("Apple"))
                 {
                     int Cals = 10;
                     etC = (EditText) findViewById(R.id.etCalories);
                     etC.setText("" + Cals + " Calories");
-
-                    Log.i("Current blah", ParseUser.getCurrentUser().getUsername());
                 }
                 else if (spinner1.getSelectedItem().toString().equals("Banana"))
                 {
@@ -139,81 +93,77 @@ public class AddMealActivity extends Activity
                 // TODO Auto-generated method stub
 
             }
-
-
-
         });
 
-
-        //addListenerOnButton();
-       // addListenerOnSpinnerItemSelection();
-
-        //listView = (ListView) findViewById(R.id.listView);
         mPreviewImageView = (ImageView) findViewById(R.id.previewImageView);
 
-        //Parse.initialize(this, "1SzsISGqSK4hDLbLyxQaHVxrPcCpbIeTKDK1xwyi", "zd1Kgbe8oTrbStbHf2QQDzkmUOyoc9pYK1r0KVLl");
-
-
         addMealFab = (FloatingActionButton) findViewById(R.id.addMealFab);
+
         etD = (EditText) findViewById(R.id.etDescrip);
         etC = (EditText) findViewById(R.id.etCalories);
 
-        //listen to upload button click
-        addMealFab.setOnClickListener(new View.OnClickListener() {
+        //listen for addMealFab click
+        addMealFab.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v)
+            {
                 final String data = etD.getText().toString(); //Get text from the etD editText field and set it equal to a String variable named data
                 final String data1 = etC.getText().toString();
                 final String user = ParseUser.getCurrentUser().getObjectId();
-                //final int user = Integer.parseInt(ParseUser.getCurrentUser().getObjectId());
+
                 ParseObject foodItemDescription = ParseObject.create("FoodItemDescription"); //Creates the table name FoodItemDescription in parse.com
 
-                //foodItemDescription.put(USER_ID_KEY, ParseUser.getCurrentUser().getObjectId());
-                /*foodItemDescription.put(BODY_KEY, data);
-                foodItemDescription.put(CALORIES_KEY, data1);*/
-                foodItemDescription.saveInBackground(new SaveCallback() {
+                foodItemDescription.saveInBackground(new SaveCallback()
+                {
                     @Override
-                    public void done(ParseException e) {
-                        Toast.makeText(AddMealActivity.this, "Successfully uploaded food item description to Parse",
-                                Toast.LENGTH_SHORT).show();
+                    public void done(ParseException e)
+                    {
+                        Toast.makeText(AddMealActivity.this, "Successfully uploaded food item description to Parse", Toast.LENGTH_SHORT).show();
                     }
                 });
-                //etD.setText(null);
-
-
-
 
                 //create parse object for image to upload
                 final ParseObject imageUpload = new ParseObject("ImageUploads");
 
-                try{
+                try
+                {
                     //convert image to bytes for upload.
                     byte[] fileBytes = FileHelper.getByteArrayFromFile(AddMealActivity.this, mMediaUri);
-                    if(fileBytes == null){
+                    if(fileBytes == null)
+                    {
                         //there was an error
-                        Toast.makeText(getApplicationContext(), "There was a feckin error!", Toast.LENGTH_LONG).show();
-                    }else{
-
+                        Toast.makeText(getApplicationContext(), "There was an error!", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
                         fileBytes = FileHelper.reduceImageForUpload(fileBytes);
                         String fileName = FileHelper.getFileName(AddMealActivity.this, mMediaUri, "image");
                         final ParseFile file = new ParseFile(fileName, fileBytes);
-                        imageUpload.saveEventually(new SaveCallback() {
+
+                        imageUpload.saveEventually(new SaveCallback()
+                        {
                             @Override
-                            public void done(ParseException e) {
-                                if(e == null){
+                            public void done(ParseException e)
+                            {
+                                if(e == null)
+                                {
                                     imageUpload.put("user", user);
                                     imageUpload.put(BODY_KEY, data);
                                     imageUpload.put(CALORIES_KEY, data1);
                                     imageUpload.put("imageContent", file);
-                                    imageUpload.saveInBackground(new SaveCallback() {
+
+                                    imageUpload.saveInBackground(new SaveCallback()
+                                    {
                                         @Override
-                                        public void done(ParseException e) {
+                                        public void done(ParseException e)
+                                        {
                                             Toast.makeText(getApplicationContext(), "Successfully Uploaded", Toast.LENGTH_LONG).show();
                                         }
                                     });
-                                }else{
-                                    //there was an error
+                                }
+                                else
+                                {
                                     //there was an error
                                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                                 }
@@ -221,8 +171,9 @@ public class AddMealActivity extends Activity
                         });
 
                     }
-
-                }catch (Exception e1){
+                }
+                catch (Exception e1)
+                {
                     Toast.makeText(getApplicationContext(), e1.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
@@ -230,40 +181,39 @@ public class AddMealActivity extends Activity
     }
 
     public void imageCap(View view) {
-        //Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-       // startActivityForResult(cameraIntent, CAMERA_REQUEST);
-
-        //show dialog
+        //Start a dialog to give the user more options
         AlertDialog.Builder builder = new AlertDialog.Builder(AddMealActivity.this);
-        builder.setTitle("Upload or Take a photo");
+        builder.setTitle("Take a photo or select from gallery:");
 
-        builder.setPositiveButton("Upload", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Open Gallery ", new DialogInterface.OnClickListener()
+        {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //upload image
+            public void onClick(DialogInterface dialog, int which)
+            {
+                //Choose an image from gallery
                 Intent choosePictureIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 choosePictureIntent.setType("image/*");
                 startActivityForResult(choosePictureIntent, CHOOSE_PIC_REQUEST_CODE);
-
             }
         });
-        builder.setNegativeButton("Take Photo", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Take Photo", new DialogInterface.OnClickListener()
+        {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Log.i("Current User", "Got here");
-                //take photo
+            public void onClick(DialogInterface dialog, int which)
+            {
+                //Open the camera to take a photo immediately
                 Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                Log.i("Current User", "Got here");
                 mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
-                Log.i("Current User", "Got here");
-                if (mMediaUri == null) {
-                    //display error
+
+                if (mMediaUri == null)
+                {
+                    //Display error
                     Toast.makeText(getApplicationContext(), "Sorry there was an error! Try again.", Toast.LENGTH_LONG).show();
-                } else {
-                    Log.i("Current User", "Got here");
+                }
+                else
+                {
                     takePicture.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
                     startActivityForResult(takePicture, TAKE_PIC_REQUEST_CODE);
-                    Log.i("Current User", "Got here");
                 }
             }
         });

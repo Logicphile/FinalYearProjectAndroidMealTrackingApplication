@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ParseQueryAdapter<ParseObject> mainAdapter;
-    private CustomAdapter urgentTodosAdapter;
+    private CustomAdapter mealAdapter;
     private ListView listView;
 
    // private List<ParseObject> myCars = new ArrayList<ParseObject>();
@@ -97,182 +97,12 @@ public class MainActivity extends AppCompatActivity
         mainAdapter.setImageKey("image");
 
         // Initialize the subclass of ParseQueryAdapter
-        urgentTodosAdapter = new CustomAdapter(this);
+        mealAdapter = new CustomAdapter(this);
 
         // Initialize ListView and set initial view to mainAdapter
         listView = (ListView) findViewById(R.id.list);
-        listView.setAdapter(urgentTodosAdapter);
-        urgentTodosAdapter.loadObjects();
-
-        /*// Initialize toggle button
-        Button toggleButton = (Button) findViewById(R.id.toggleButton);
-        toggleButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                if (listView.getAdapter() == mainAdapter) {
-                    listView.setAdapter(urgentTodosAdapter);
-                    urgentTodosAdapter.loadObjects();
-                } else {
-                    listView.setAdapter(mainAdapter);
-                    mainAdapter.loadObjects();
-                }
-            }
-
-        });*/
-
-       /* ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ImageUploads");
-
-        // Locate the objectId from the class
-        query.getInBackground("eqaeJwv0mb",
-                new GetCallback<ParseObject>() {
-
-                    public void done(ParseObject object,
-                                     ParseException e) {
-                        // TODO Auto-generated method stub
-
-                        // Locate the column named "ImageName" and set
-                        // the string
-                        ParseFile fileObject = (ParseFile) object
-                                .get("imageContent");
-                        fileObject
-                                .getDataInBackground(new GetDataCallback() {
-
-                                    public void done(byte[] data,
-                                                     ParseException e) {
-                                        if (e == null) {
-                                            Log.d("test",
-                                                    "We've got data in data.");
-                                            // Decode the Byte[] into
-                                            // Bitmap
-                                            Bitmap bmp = BitmapFactory
-                                                    .decodeByteArray(
-                                                            data, 0,
-                                                            data.length);
-
-                                            // Get the ImageView from
-                                            // main.xml
-                                            ImageView image = (ImageView) findViewById(R.id.image);
-
-                                            // Set the Bitmap into the
-                                            // ImageView
-                                            image.setImageBitmap(bmp);
-
-
-
-                                        } else {
-                                            Log.d("test",
-                                                    "There was a problem downloading the data.");
-                                        }
-                                    }
-                                });
-                    }
-                });
-*/
-
-
-
-        //Parse.initialize(this, "1SzsISGqSK4hDLbLyxQaHVxrPcCpbIeTKDK1xwyi", "zd1Kgbe8oTrbStbHf2QQDzkmUOyoc9pYK1r0KVLl");
-
-       /*QueryImages qi = new QueryImages();
-        qi.queryImagesFromParse();*/
-/*
-        //initialize
-        mAddImageBtn = (Button)findViewById(R.id.addImageButton);
-        mUploadImageBtn = (Button)findViewById(R.id.addMealFab);
-        mPreviewImageView = (ImageView)findViewById(R.id.mealimageView);
-
-        //listen to add button click
-        mAddImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //show dialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Upload or Take a photo");
-                builder.setPositiveButton("Upload", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //upload image
-                        Intent choosePictureIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                        choosePictureIntent.setType("image*//*");
-                        startActivityForResult(choosePictureIntent, CHOOSE_PIC_REQUEST_CODE);
-
-                    }
-                });
-                builder.setNegativeButton("Take Photo", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //take photo
-                        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
-                        if (mMediaUri == null) {
-                            //display error
-                            Toast.makeText(getApplicationContext(), "Sorry there was an error! Try again.", Toast.LENGTH_LONG).show();
-                        } else {
-                            takePicture.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
-                            startActivityForResult(takePicture, TAKE_PIC_REQUEST_CODE);
-                        }
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });*/
-
-        //listen to upload button click
-   /*     mUploadImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //create parse object for image to upload
-                final ParseObject imageUpload = new ParseObject("ImageUploads");
-                try {
-                    //convert image to bytes for upload.
-                    byte[] fileBytes = FileHelper.getByteArrayFromFile(MainActivity.this, mMediaUri);
-                    if (fileBytes == null) {
-                        //there was an error
-                        Toast.makeText(getApplicationContext(), "There was an error. Try again!", Toast.LENGTH_LONG).show();
-                    } else {
-
-                        fileBytes = FileHelper.reduceImageForUpload(fileBytes);
-                        String fileName = FileHelper.getFileName(MainActivity.this, mMediaUri, "image");
-                        final ParseFile file = new ParseFile(fileName, fileBytes);
-                        imageUpload.saveEventually(new SaveCallback() {
-                            @Override
-                            public void done(ParseException e) {
-                                if (e == null) {
-
-                                    imageUpload.put("imageContent", file);
-                                    imageUpload.saveInBackground(new SaveCallback() {
-                                        @Override
-                                        public void done(ParseException e) {
-                                            Toast.makeText(getApplicationContext(), "Success Uploading iMage!", Toast.LENGTH_LONG).show();
-                                        }
-                                    });
-                                } else {
-                                    //there was an error
-                                    //there was an error
-                                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        });
-
-                    }
-
-                } catch (Exception e1) {
-                    Toast.makeText(getApplicationContext(), e1.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-*/
-
-
-
-
-       /* final TextView textViewToChange = (TextView) findViewById(R.id.user_test);
-        textViewToChange.setText(currentUser);*/
-
-        //Log.i("Current User", ParseUser.getCurrentUser().getObjectId());
-
+        listView.setAdapter(mealAdapter);
+        mealAdapter.loadObjects();
 
         /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -284,57 +114,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
     }
-
-    //inner helper method
-   /* private Uri getOutputMediaFileUri(int mediaTypeImage) {
-
-        if(isExternalStorageAvailable()){
-            //get the URI
-            //get external storage dir
-            File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "UPLOADIMAGES");
-            //create subdirectore if it does not exist
-            if(!mediaStorageDir.exists()){
-                //create dir
-                if(! mediaStorageDir.mkdirs()){
-
-                    return null;
-                }
-            }
-            //create a file name
-            //create file
-            File mediaFile = null;
-            Date now = new Date();
-            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(now);
-
-            String path = mediaStorageDir.getPath() + File.separator;
-            if(mediaTypeImage == MEDIA_TYPE_IMAGE){
-                mediaFile = new File(path + "IMG_" + timestamp + ".jpg");
-            }
-            //return file uri
-            Log.d("UPLOADIMAGE", "FILE: " + Uri.fromFile(mediaFile));
-
-            return Uri.fromFile(mediaFile);
-        }else {
-
-            return null;
-        }
-
-    }*/
-    //check if external storage is mounted. helper method
-   /* private boolean isExternalStorageAvailable(){
-        String state = Environment.getExternalStorageState();
-        if(state.equals(Environment.MEDIA_MOUNTED)){
-            return true;
-        }else{
-            return false;
-        }
-    }*/
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -389,12 +169,10 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-
         /////////////////////////////////////    LOGOUT OVERFLOW OPTION    ///////////////////////////////////////
 
         //The below if statement logs the user out of the database if the option to log out is pressed in the overflow menu of the main activity
-        if (id == R.id.action_settings) {
+        if (id == R.id.log_out) {
             ParseUser.getCurrentUser().logOut();
             startActivity(new Intent(MainActivity.this, LoginCheck.class));
             return true;
@@ -413,6 +191,7 @@ public class MainActivity extends AppCompatActivity
             // Handle the daily nav menu action
         } else if (id == R.id.nav_graph)
         {
+            // Open the chart screen
             Intent intent = new Intent(MainActivity.this, Chart.class);
             startActivity(intent);
         }
@@ -451,29 +230,4 @@ public class MainActivity extends AppCompatActivity
         IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
         integrator.initiateScan(IntentIntegrator.QR_CODE_TYPES);
     }
-
-    /*@Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        IntentResult result =
-                IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (result != null) {
-            String contents = result.getContents();
-            if (contents != null) {
-             //   String scanRsult =
-                //showDialog(R.string.result_succeeded, result.toString());
-            } else {
-               // showDialog(R.string.result_failed,
-               //         getString(R.string.result_failed_why));
-            }
-        }
-    }*/
-
-   /* private void showDialog(int title, CharSequence message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(title);
-        builder.setMessage(message);
-       // builder.setPositiveButton(R.string.ok_button, null);
-        builder.show();
-    }*/
-
 }

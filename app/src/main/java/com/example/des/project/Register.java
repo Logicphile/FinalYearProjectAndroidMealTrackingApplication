@@ -19,18 +19,20 @@ import com.parse.SignUpCallback;
 
 public class Register extends AppCompatActivity
 {
+    // Declare fields
     private EditText usernameView;
     private EditText passwordView;
     private EditText passwordAgainView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Set up the signup form.
+        // Set up the registration form.
         usernameView = (EditText) findViewById(R.id.username);
         passwordView = (EditText) findViewById(R.id.password);
         passwordAgainView = (EditText) findViewById(R.id.passwordAgain);
